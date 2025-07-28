@@ -1,0 +1,17 @@
+[project]
+name = "s25-sqr-lab6-performance-mohammed-nour"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Mohammed-Nour",email = "o.shaheen1882@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "locust (>=2.34.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
