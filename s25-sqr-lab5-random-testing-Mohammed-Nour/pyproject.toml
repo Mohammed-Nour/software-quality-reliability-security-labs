@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "temp-lab-random"
+version = "0.1.0"
+description = ""
+authors = ["Ahror Jabborov <71430474+ahrorjabborov@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.1.1"
+mutmut = "^2.4.4"
+hypothesis = "^6.130.6"
+httpx = "^0.28.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
