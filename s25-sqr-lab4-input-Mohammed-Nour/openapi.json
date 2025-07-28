@@ -1,0 +1,241 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "FastAPI",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/spec/{email}": {
+        "get": {
+          "summary": "Spec",
+          "operationId": "spec_spec__email__get",
+          "parameters": [
+            {
+              "name": "email",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Email"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Spec"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/price/{email}": {
+        "post": {
+          "summary": "Price",
+          "operationId": "price_price__email__post",
+          "parameters": [
+            {
+              "name": "email",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Email"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Input"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Price"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "Input": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "title": "Type"
+            },
+            "plan": {
+              "type": "string",
+              "title": "Plan"
+            },
+            "distance": {
+              "type": "integer",
+              "title": "Distance"
+            },
+            "planned_distance": {
+              "type": "integer",
+              "title": "Planned Distance"
+            },
+            "time": {
+              "type": "integer",
+              "title": "Time"
+            },
+            "planned_time": {
+              "type": "integer",
+              "title": "Planned Time"
+            },
+            "inno_discount": {
+              "type": "string",
+              "title": "Inno Discount"
+            }
+          },
+          "type": "object",
+          "required": [
+            "type",
+            "plan",
+            "distance",
+            "planned_distance",
+            "time",
+            "planned_time",
+            "inno_discount"
+          ],
+          "title": "Input"
+        },
+        "Price": {
+          "properties": {
+            "price": {
+              "type": "number",
+              "title": "Price"
+            }
+          },
+          "type": "object",
+          "required": [
+            "price"
+          ],
+          "title": "Price"
+        },
+        "Spec": {
+          "properties": {
+            "budget_minute_price": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "title": "Budget Minute Price"
+            },
+            "luxury_minute_price": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "title": "Luxury Minute Price"
+            },
+            "budget_km_price": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "title": "Budget Km Price"
+            },
+            "deviation": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "title": "Deviation"
+            },
+            "inno_discount": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "title": "Inno Discount"
+            }
+          },
+          "type": "object",
+          "required": [
+            "budget_minute_price",
+            "luxury_minute_price",
+            "budget_km_price",
+            "deviation",
+            "inno_discount"
+          ],
+          "title": "Spec"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      }
+    }
+  }
