@@ -1,0 +1,22 @@
+name: lab security
+
+# add your pipline description below
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Run image
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: '1.7.0'
+      - name: Install dependencies
+        run: poetry install --no-root
+      - name: Run pytest
+        run: poetry run pytest test/hack.py
+      - name: Run bandit
+        run: poetry run bandit app/code.py

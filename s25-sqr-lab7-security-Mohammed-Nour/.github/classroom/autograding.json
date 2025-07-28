@@ -1,0 +1,16 @@
+{
+  "tests": [
+    {
+      "name": "bandit",
+      "setup": "sudo -H pip3 install poetry ; poetry install --no-root",
+      "run": "poetry run bandit -r ./app/code.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 5
+    }
+   
+
+  ]
+}
